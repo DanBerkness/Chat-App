@@ -29,16 +29,10 @@ public class ChatController {
 	public String getWelcome(ModelMap model) {
 
 		List<Channel> channels = channelService.getChannelNames();
-		
 		model.put("channels", channels);
-		System.out.println("Now this is happening4");
+		
 		return "welcome";
 	}
-
-
-
-
-
 
 	@GetMapping("/channel/{channelId}")
 	public String getChannel( ModelMap model, @PathVariable Long channelId) {
@@ -47,16 +41,6 @@ public class ChatController {
 	}
 }
 	
-//	@GetMapping("/send-message")
-//	public String returnMessage (String message) {
-//		
-//			return "/send-message";
-//	}
-	
-//	@PostMapping("/welcome")
-//	public User addUser(@RequestBody User user) {
-//		return userService.addUser(user);
-//		
-//	}
+
 	
 

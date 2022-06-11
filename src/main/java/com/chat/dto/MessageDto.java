@@ -6,6 +6,15 @@ public class MessageDto {
 	private String messageContent;
 	private String userName;
 	
+	
+	
+	public MessageDto(Long channelId, String messageContent, String userName) {
+		super();
+		this.channelId = channelId;
+		this.messageContent = messageContent;
+		this.userName = userName;
+	}
+	
 	public Long getChannelId() {
 		return channelId;
 	}

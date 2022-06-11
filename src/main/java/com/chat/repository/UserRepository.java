@@ -1,20 +1,21 @@
 package com.chat.repository;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import org.springframework.stereotype.Repository;
-
 import com.chat.dto.Channel;
 import com.chat.dto.Message;
 import com.chat.dto.User;
+import com.chat.dto.MessageDto;
 
 @Repository
 public class UserRepository {
 
+	private List<MessageDto> messages = new ArrayList<>();
 	private long userId = 4;
 
 	private List<User> allUsers = new ArrayList<>();
@@ -95,7 +96,6 @@ public class UserRepository {
 	}
 
 	public Set<User> getUsers() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -105,9 +105,10 @@ public class UserRepository {
 
 	}
 
-	public Map<Long, Message> getAllMessages() {
-		return allChatMap;
-
+	public List<MessageDto> listMessages(Long channelId) {
+		return messages.stream().filter((m) -> m.getChannelId().equals(channelId))
+				.toList();
+	
 	}
 
 	public User addUser(User user) {
@@ -122,8 +123,12 @@ public class UserRepository {
 	}
 
 	public void getExistingUser(User user) {
-		//System.out.println(user.getUserName());
 		populateUsers(user);
+		
+	}
+
+	public void addMessage(MessageDto message) {
+		messages.add(message);
 		
 	}
 
