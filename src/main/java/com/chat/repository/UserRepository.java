@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Repository;
 import com.chat.dto.Channel;
 import com.chat.dto.Message;
@@ -107,7 +109,7 @@ public class UserRepository {
 
 	public List<MessageDto> listMessages(Long channelId) {
 		return messages.stream().filter((m) -> m.getChannelId().equals(channelId))
-				.toList();
+				.collect(Collectors.toList());
 	
 	}
 
